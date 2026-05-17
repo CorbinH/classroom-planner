@@ -2,22 +2,19 @@ import { useState } from 'react';
 import { NavLink } from 'react-router';
 import { Code, Group, Text } from '@mantine/core';
 import classes from './NavbarSimple.module.css';
-import { StudentIcon, HouseIcon, SignOutIcon } from '@phosphor-icons/react';
+import { SignOutIcon } from '@phosphor-icons/react';
+import { NavbarItem } from './types';
 
-const data = [
-  { link: '/', label: 'Students', icon: StudentIcon },
-  { link: '/classroom', label: 'Classroom', icon: HouseIcon },
-];
-
-export function NavbarSimple() {
+export function NavbarSimple(props:{data?:NavbarItem[]}) {
   const [active, setActive] = useState('Students');
 
-  const links = data.map((item) => (
+  const links = props?.data?.map((item) => (
     <NavLink
       className={classes.link}
       data-active={item.label === active || undefined}
       to={item.link}
       key={item.label}
+      data-testid={item.label}
       onClick={(event) => {
         setActive(item.label);
       }}

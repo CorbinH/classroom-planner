@@ -1,7 +1,5 @@
-import { Grid, Stack } from '@mantine/core';
-import { Sidebar } from '@/components/Sidebar/Sidebar';
+import { Stack } from '@mantine/core';
 import { ColorSchemeToggle } from '../components/ColorSchemeToggle/ColorSchemeToggle';
-import { Welcome } from '../components/Welcome/Welcome';
 
 // provides `loaderData` to the component
 export async function loader({}) {
