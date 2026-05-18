@@ -1,5 +1,5 @@
 .container{
-  color:'F7F7F7'
+  min-width: '180px';
 }
 
 .image{
