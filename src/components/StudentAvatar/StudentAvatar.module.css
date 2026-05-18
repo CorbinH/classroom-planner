@@ -1,0 +1,13 @@
+.container{
+  color:'F7F7F7'
+}
+
+.image{
+  border-radius: 100px;
+  aspect-ratio: 1 / 1; 
+  border-color: gainsboro;
+  border-width: 1px;
+  min-width: 32px;
+  min-height: 32px;
+  border-style: solid;
+}
