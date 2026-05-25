@@ -3,11 +3,19 @@ import classes from './StudentAvatar.module.css';
 import { Image, Group, Text, Center, Avatar } from "@mantine/core";
 import { StudentIcon } from "@phosphor-icons/react";
 
-export function StudentAvatar(props:{student:Student}) {
+interface StudentAvatarProps { 
+  student:Student;
+}
+
+
+export function StudentAvatar({
+    student,
+  }: StudentAvatarProps
+) {
   return (
     <Group className={classes.container}>
-      <Avatar src={props.student.img}/>
-      <Text>{props.student.name}</Text>
+      <Avatar src={student.img}/>
+      <Text>{student.name}</Text>
     </Group>
   )
 }

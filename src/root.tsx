@@ -33,7 +33,7 @@ export function Layout({
             <NavbarSimple 
               data = {data}
               />
-            <Box p={"sm"}>
+            <Box p={"sm"} h={"100vh"} w={"100vw"}>
               {children}
             </Box>
           </Flex>
