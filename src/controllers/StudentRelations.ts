@@ -41,3 +41,17 @@ export function findStudentRelations(studentRelations:StudentRelations,student:S
     return student.uuid === s[0] ? s[1] : s[0]
   })
 }
+
+export function removeStudentFromAll(studentRelations:StudentRelations,student:Student) {
+  for(const relationKey in studentRelations.worksWellWith) {
+    if (relationKey.includes(student.uuid)) {
+      studentRelations.worksWellWith.delete(relationKey)
+    }
+  }
+  for(const relationKey in studentRelations.distractedBy) {
+    if (relationKey.includes(student.uuid)) {
+      studentRelations.distractedBy.delete(relationKey)
+    }
+  }
+  return structuredClone(studentRelations)
+}
