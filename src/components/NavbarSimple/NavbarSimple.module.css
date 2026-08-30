@@ -1,6 +1,7 @@
 .navbar {
-  height: 700px;
-  width: 300px;
+	flex-shrink: 0;
+	flex-basis: 200px;
+	flex-grow: 0;
   padding: var(--mantine-spacing-md);
   display: flex;
   flex-direction: column;
