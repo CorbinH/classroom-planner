@@ -11,7 +11,7 @@ export interface StudentListProps {
   title:string,
   selectedUUID?:string, 
   setSelectedUUID?:Dispatch<SetStateAction<string>>,
-  enableRemoveStudent:boolean,
+  addStudent?():void,
   removeStudent?(student:Student) : void
 }
 
@@ -34,15 +34,19 @@ export function StudentList(props:StudentListProps) {
                 <StudentAvatar student={student} key={student.uuid}/>
                 <div style={{"flexGrow":1}}/>
                 {
-                  props.enableRemoveStudent 
-                  && props.removeStudent 
+                  props.removeStudent 
                   && <CloseButton onClick={(event)=>{props.removeStudent?props.removeStudent(student):null}}/>}
               </Paper>
             )
           })
         }
       </ScrollArea>
-      <Button variant={"outline"} color={"indigo"} className={classes.button}><PlusCircleIcon size={24}/>Add Student</Button>
+      {
+        props.addStudent && 
+        <Button variant={"outline"} color={"indigo"} className={classes.button} onClick={props.addStudent}>
+          <PlusCircleIcon size={24}/> Add Student
+        </Button>
+      }
     </Stack>
   )
 }
