@@ -11,6 +11,7 @@ import {
   ScrollRestoration,
 } from "react-router";
 import { HouseIcon, StudentIcon } from '@phosphor-icons/react';
+import { ClassroomProvider } from './context/ClassroomContext';
 
 const data:NavbarItem[] = [
   { link: '/', label: 'Students', icon: StudentIcon },
@@ -27,14 +28,16 @@ export function Layout({
       <head>
         <link rel="icon" href="/favicon.ico" />
       </head>
-      <body>
+      <body style={{"height":"100vh", "overflow":'hidden'}}>
         <MantineProvider theme={theme}>
           <Flex>
             <NavbarSimple 
               data = {data}
               />
-            <Box p={"sm"} h={"100vh"} w={"100vw"}>
-              {children}
+            <Box p={"sm"} mah={"100vh"}>
+              <ClassroomProvider>
+                {children}
+              </ClassroomProvider>
             </Box>
           </Flex>
         </MantineProvider>
