@@ -2,7 +2,7 @@ import { Student } from "@/models/Student";
 import classes from './StudentDetails.module.css';
 import { Button, ScrollArea, Stack, Text, Title, Divider, Paper, Textarea, Group, Avatar, TextInput, STYlE_PROPS_DATA } from "@mantine/core";
 import { StudentAvatar } from "../StudentAvatar/StudentAvatar";
-import { PlusCircleIcon, Target } from "@phosphor-icons/react";
+import { PlusCircleIcon, Target, TrashIcon } from "@phosphor-icons/react";
 import { Dispatch, SetStateAction, useCallback, useMemo, useRef, useState } from "react";
 import { setSelection } from "@testing-library/user-event/dist/cjs/event/selection/setSelection.js";
 import { StudentList } from "../StudentList/StudentList";
@@ -16,8 +16,9 @@ export interface StudentDetailsProps {
   students: Student[],
   selectedStudent: Student,
   studentRelations: StudentRelations,
-  setStudentRelations: Dispatch<SetStateAction<StudentRelations>>
-  updateStudent(student:Student): void
+  setStudentRelations: Dispatch<SetStateAction<StudentRelations>>,
+  updateStudent(student:Student): void,
+  removeStudent(student:Student): void
 }
 
 function getStudentsWithRelationUUIDs(students: Student[], relationUUIDs: string[]) {
@@ -64,6 +65,9 @@ export function StudentDetails(props:StudentDetailsProps) {
             onChange={(event)=>{
               props.updateStudent({...props.selectedStudent, "name":event.currentTarget.value})
             }}/>
+          <Button variant={"outline"} color={"red"} className={classes.button} onClick={()=>{props.removeStudent(props.selectedStudent)}}>
+            <TrashIcon size={24}/> Delete Student
+          </Button>
         </Group>
         <Textarea label="Student Notes" name="Notes" onChange={(event)=>{
           props.updateStudent({...props.selectedStudent, "notes":event.currentTarget.value})
